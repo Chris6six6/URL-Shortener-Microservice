@@ -26,8 +26,8 @@ let Url = mongoose.model('Url', UrlSchema);
 const agregarUrl = async (req, res) => {
   const { url } = req.body;
 
-  if (!url) {
-    return res.status(400).json({ error: 'URL is required' });
+  if (!url.includes('https://') && !url.includes('https://')) {
+    return res.json({ error: 'invalid url' });
   }
 
   // Generar un código corto (puedes usar un método más avanzado en producción)
